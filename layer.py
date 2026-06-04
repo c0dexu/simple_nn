@@ -2,6 +2,21 @@ import numpy as np
 import activations
 
 class Layer:
+    """
+    | Creates a neural layer.
+    | **Example**
+    ```
+    m_input = [1, 2, 5]
+    OUTPUT_SIZE = 5
+
+    net = Sequential(m_input, [
+        Layer(32, 3, activation=activations.relu),
+        Layer(64, 32, activation=activations.relu),
+        Layer(OUTPUT_SIZE, 64, activation=activations.softmax)
+    ])
+    ```
+    """
+    
     def __init__(self, units:int, input_size:int, activation=None, label = None):
         self.label = label 
         self.W = 2 * np.random.rand(units, input_size) - 1
@@ -33,19 +48,13 @@ class Sequential:
                  
          
 
-m_input = [1, 2, 5]
-OUTPUT_SIZE = 5
+# m_input = [1, 2, 5]
+# OUTPUT_SIZE = 5
 
-# x1 = Layer(32, 3, activation=activations.relu)(m_input)
-# x2 = Layer(64, 32, activation=activations.relu)(x1)
-# output = Layer(5, 64, activation=activations.softmax)(x2)
-# print(output)
+# net = Sequential(m_input, [
+#     Layer(32, 3, activation=activations.relu),
+#     Layer(64, 32, activation=activations.relu),
+#     Layer(OUTPUT_SIZE, 64, activation=activations.softmax)
+# ])
 
-
-net = Sequential(m_input, [
-    Layer(32, 3, activation=activations.relu),
-    Layer(64, 32, activation=activations.relu),
-    Layer(OUTPUT_SIZE, 64, activation=activations.softmax)
-])
-
-print(net.feedforward())
+# print(net.feedforward())
